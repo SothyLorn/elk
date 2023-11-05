@@ -98,6 +98,14 @@ services:
       - ./apm-server/config/apm-server.yml:/usr/share/apm-server/apm-server.yml:ro,Z
     ports:
       - 8200:8200
+    command: >
+      apm-server -e
+        -E monitoring.enabled=true
+        -E apm-server.expvar.enabled=true
+        -E apm-server.instrumentation.enabled=true
+        -E output.elasticsearch.hosts=["http://elasticsearch:9200"]
+        -E output.elasticsearch.username=${ELASTIC_USERNAME}
+        -E output.elasticsearch.password=${ELASTICSEARCH_PASSWORD}
     environment:
       ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
       ELASTICSEARCH_USERNAME: "${ELASTIC_USERNAME:-}"
