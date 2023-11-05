@@ -107,9 +107,9 @@ services:
         -E output.elasticsearch.username=${ELASTIC_USERNAME}
         -E output.elasticsearch.password=${ELASTICSEARCH_PASSWORD}
     environment:
-      - ES_URL=${"http://elasticsearch:9200"}
-      - ES_USER="${ELASTIC_USERNAME:-}"
-      - ES_PASS="${ELASTICSEARCH_PASSWORD:-}"
+      ES_URL: '${"http://elasticsearch:9200"}'
+      ES_USER: "${ELASTIC_USERNAME:-}"
+      ES_PASS: "${ELASTICSEARCH_PASSWORD:-}"
       # ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
       # ELASTICSEARCH_USERNAME: "${ELASTIC_USERNAME:-}"
       # ELASTICSEARCH_PASSWORD: "${ELASTICSEARCH_PASSWORD:-}"
