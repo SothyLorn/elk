@@ -100,10 +100,9 @@ services:
       - 8200:8200
     command: >
       --strict.perms=false
-      apm-server -e
-        -E output.elasticsearch.hosts=["http://elasticsearch:9200"]
-        -E output.elasticsearch.username="elastic"
-        -E output.elasticsearch.password="changeme"
+      -e -E output.elasticsearch.hosts=["http://elasticsearch:9200"]
+      -e -E output.elasticsearch.username="elastic"
+      -e -E output.elasticsearch.password="changeme"
     networks:
       - elk
     depends_on:
