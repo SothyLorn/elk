@@ -101,8 +101,8 @@ services:
     command: >
       --strict.perms=false
       -e -E output.elasticsearch.hosts=["http://elasticsearch:9200"]
-      -e -E output.elasticsearch.username="elastic"
-      -e -E output.elasticsearch.password="changeme"
+      -e -E output.elasticsearch.username="${ELASTIC_USERNAME}"
+      -e -E output.elasticsearch.password="${ELASTIC_PASSWORD}"
     networks:
       - elk
     depends_on:
