@@ -99,21 +99,11 @@ services:
     ports:
       - 8200:8200
     command: >
+      --strict.perms=false
       apm-server -e
-        -E monitoring.enabled=true
-        -E apm-server.expvar.enabled=true
-        -E apm-server.instrumentation.enabled=true
         -E output.elasticsearch.hosts=["http://elasticsearch:9200"]
-        -E output.elasticsearch.username=${ELASTIC_USERNAME}
-        -E output.elasticsearch.password=${ELASTICSEARCH_PASSWORD}
-    environment:
-      # ES_URL: '${"http://elasticsearch:9200"}'
-      # ES_USER: "${ELASTIC_USERNAME:-}"
-      # ES_PASS: "${ELASTICSEARCH_PASSWORD:-}"
-      ELASTICSEARCH_PASSWORD: "${ELASTICSEARCH_PASSWORD:-}"
-      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
-      # ELASTICSEARCH_USERNAME: "${ELASTIC_USERNAME:-}"
-      # ELASTICSEARCH_PASSWORD: "${ELASTICSEARCH_PASSWORD:-}"
+        -E output.elasticsearch.username="elastic"
+        -E output.elasticsearch.password="changeme"
     networks:
       - elk
     depends_on:
